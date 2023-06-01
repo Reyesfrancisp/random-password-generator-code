@@ -12,19 +12,69 @@ function writePassword() {
 
 // Write an array for numbers;
 
-numberArray = [0,1,2,3,4,5,6,7,8,9];
+var numberArray = [];
+
+for (var numIndex = 0; numIndex < 10; numIndex++)
+{
+  numberArray.push(numIndex);
+}
 
 // Write an array for lowercase values
 
-lowercaseArray = [];
-
+var lowercaseArray = [];
+for (var lowerIndex = 97; lowerIndex <= 123; lowerIndex++) 
+{
+  lowercaseArray.push(String.fromCharCode(lowerIndex));
+}
 // Write an array for uppercase letters
 
-uppercaseArray = [];
-
+var uppercaseArray = [];
+for (var upperIndex = 65; upperIndex <= 90; upperIndex++) 
+{
+  uppercaseArray.push(String.fromCharCode(upperIndex));
+}
 // Write an array for special characters
 
-specialCharArray = ["!" , '"' , "#" , "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+var specialCharArray = ['!', '#', '$', '%', '&', '*', '+', '-', '@', '^'];
+
+var passwordArray = "";
+var passwordLength = 0;
+var lowercaseFlag = false;
+var uppercaseFlag = false;
+var numberFlag = true;
+var specialCharFlag = false;
+
+if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) )
+{
+//error
+
+}
+else
+{
+//proceed with code
+
+}
+
+
+
+generateRandomArrayElement(arrayContent, length)
+{
+var random = Math.random();
+var randomValue = Math.floor(random * length);
+passwordArray += arrayContent[randomValue];
+}
+
+
+
+// console.log(numberArray);
+
+// console.log(lowercaseArray);
+
+// console.log(uppercaseArray);
+
+// console.log(specialCharArray);
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
