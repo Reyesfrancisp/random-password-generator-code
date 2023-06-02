@@ -5,9 +5,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-  console.log(password);
 }
 
 function generatePassword() {
@@ -56,7 +54,7 @@ function generatePassword() {
   function generateRandomArrayElement(arrayContent, length) {
     var random = Math.random();
     var randomValue = Math.floor(random * length);
-    passwordString += arrayContent[randomValue];
+    return arrayContent[randomValue];
   }
 
   //get each criteria by setting flags which allow entry
@@ -117,11 +115,10 @@ do
   //generate the random array elements for the password
 
   for (var stringIndex = 0; stringIndex < passwordLength; stringIndex++) {
-    generateRandomArrayElement(combinedRandomArray, combinedRandomArray.length);
+    passwordString = passwordString.concat(generateRandomArrayElement(combinedRandomArray, combinedRandomArray.length));
   }
 
   return passwordString;
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
