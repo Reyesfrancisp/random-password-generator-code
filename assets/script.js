@@ -11,7 +11,6 @@ function writePassword() {
 function generatePassword() {
 
   // Write an array for numbers;
-
   var numberArray = [];
 
   for (var numIndex = 0; numIndex < 10; numIndex++) {
@@ -19,29 +18,29 @@ function generatePassword() {
   }
 
   // Write an array for lowercase values
-
   var lowercaseArray = [];
   for (var lowerIndex = 97; lowerIndex <= 122; lowerIndex++) {
     lowercaseArray.push(String.fromCharCode(lowerIndex));
   }
-  // Write an array for uppercase letters
 
+  // Write an array for uppercase letters
   var uppercaseArray = [];
   for (var upperIndex = 65; upperIndex <= 90; upperIndex++) {
     uppercaseArray.push(String.fromCharCode(upperIndex));
   }
+
   // Write an array for special characters
+  var specialCharArray = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ':', ';', '<', '>', '.', '?', '/'];
 
-  var specialCharArray =  ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ':', ';', '<', '>', '.', '?', '/'];
- // console.log("Number array: " + numberArray);
+  // console.log("Number array: " + numberArray);
 
- // console.log("Lower case array: " + lowercaseArray);
+  // console.log("Lower case array: " + lowercaseArray);
 
- // console.log("Upper case array: " + uppercaseArray);
+  // console.log("Upper case array: " + uppercaseArray);
 
- // console.log("Special character array: " + specialCharArray);
+  // console.log("Special character array: " + specialCharArray);
 
-// initialize other variables
+  // initialize other variables
   var passwordString = "";
   var passwordLength = 0;
   var lowercaseFlag = false;
@@ -58,24 +57,21 @@ function generatePassword() {
   }
 
   //get each criteria by setting flags which allow entry
+  do {
+    lowercaseFlag = confirm("Do you want lower case letters in your password? Click OK to include them, press cancel to not include them.");
 
-do 
-{
-  lowercaseFlag = confirm("Do you want lower case letters in your password? Click OK to include them, press cancel to not include them.");
+    uppercaseFlag = confirm("Do you want upper case letters in your password? Click OK to include them, press cancel to not include them.");
 
-  uppercaseFlag = confirm("Do you want upper case letters in your password? Click OK to include them, press cancel to not include them.");
+    numberFlag = confirm("Do you want numbers in your password? Click OK to include them, press cancel to not include them.");
 
-  numberFlag = confirm("Do you want numbers in your password? Click OK to include them, press cancel to not include them.");
+    specialCharFlag = confirm("Do you want special characters in your password? Click OK to include them, press cancel to not include them.");
 
-  specialCharFlag = confirm("Do you want special characters in your password? Click OK to include them, press cancel to not include them.");
+    console.log("Lowercase: " + lowercaseFlag + " Uppercase: " + uppercaseFlag + " Number: " + numberFlag + " Special: " + specialCharFlag);
 
-  console.log("Lowercase: " + lowercaseFlag + " Uppercase: " + uppercaseFlag +" Number: " + numberFlag + " Special: " + specialCharFlag);
-
-} while(specialCharFlag == false && numberFlag == false && lowercaseFlag == false && uppercaseFlag == false)
+  } while (specialCharFlag == false && numberFlag == false && lowercaseFlag == false && uppercaseFlag == false)
 
   //password generator array to pull from
-
-//  console.log(combinedRandomArray +": showing the empty combined array.");
+  //  console.log(combinedRandomArray +": showing the empty combined array.");
 
   if (lowercaseFlag == true) {
 
@@ -87,7 +83,7 @@ do
 
     combinedRandomArray = combinedRandomArray.concat(uppercaseArray);
   }
-//  console.log(combinedRandomArray + " : is the array after checking the upper case flag.");
+  //  console.log(combinedRandomArray + " : is the array after checking the upper case flag.");
 
   if (numberFlag == true) {
     combinedRandomArray = combinedRandomArray.concat(numberArray);
@@ -98,7 +94,7 @@ do
 
     combinedRandomArray = combinedRandomArray.concat(specialCharArray);
   }
-//  console.log(combinedRandomArray + " : is the array after checking the special character flag.");
+  //  console.log(combinedRandomArray + " : is the array after checking the special character flag.");
 
   //console log to display the current combined array that is given by the prompt
 
@@ -107,7 +103,7 @@ do
   //console.log(passwordLength);
 
   //password length checker
-  do { 
+  do {
     passwordLength = Number(prompt("Please enter a number between 8 and 128 inclusive for the length of your password: "));
   } while (!(passwordLength >= 8 && passwordLength <= 128))
 
@@ -115,7 +111,7 @@ do
   //generate the random array elements for the password
 
   for (var stringIndex = 0; stringIndex < passwordLength; stringIndex++) {
-    passwordString = passwordString.concat(generateRandomArrayElement(combinedRandomArray, combinedRandomArray.length));
+    passwordString += generateRandomArrayElement(combinedRandomArray, combinedRandomArray.length);
   }
 
   return passwordString;
